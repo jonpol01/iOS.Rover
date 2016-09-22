@@ -26,12 +26,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var inp : NSInputStream?
-    var out : NSOutputStream?
-    @IBAction func connectButton(sender: AnyObject) {
+    var inp : InputStream?
+    var out : OutputStream?
+    @IBAction func connectButton(_ sender: AnyObject) {
     }
 
-    @IBAction func connectButton_up(sender: AnyObject) {
+    @IBAction func connectButton_up(_ sender: AnyObject) {
 //        let addr = "localhost"
 //        let addr = "192.9.200.125"
 //        let port = 50000

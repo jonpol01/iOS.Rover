@@ -11,15 +11,11 @@ import Foundation
 
 class socketsController: UIViewController {
 
-    let urlString = "http://localhost/usr/demo/iosmysql.php"
-
     @IBOutlet weak var netData: UILabel!
 
-
-    var timer = NSTimer()
-    var inp : NSInputStream?
-    var out : NSOutputStream?
-
+    var timer = Timer()
+    var inp : InputStream?
+    var out : OutputStream?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,112 +30,56 @@ class socketsController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeButton(sender: AnyObject) {
+    @IBAction func closeButton(_ sender: AnyObject) {
+        let inputCloseStream : InputStream = inp!
+        let outputCloseStream : OutputStream = out!
+        inputCloseStream.close()
+        outputCloseStream.close()
     }
 
-    @IBAction func fwdButton(sender: AnyObject) {
+    @IBAction func fwdButton(_ sender: AnyObject) {
         socketWrite("1\n")
     }
-    @IBAction func buttonReleased(sender: AnyObject) {
+    @IBAction func buttonReleased(_ sender: AnyObject) {
         socketWrite("0\n")
     }
 
-    @IBAction func bckButton(sender: AnyObject) {
+    @IBAction func bckButton(_ sender: AnyObject) {
+        socketWrite("-1\n");
     }
 
-    @IBAction func leftButton(sender: AnyObject) {
+    @IBAction func leftButton(_ sender: AnyObject) {
         socketWrite("3\n")
     }
 
-    @IBAction func rightButton(sender: AnyObject) {
+    @IBAction func rightButton(_ sender: AnyObject) {
         socketWrite("4\n")
     }
 
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function **Countdown** with the interval of 1 seconds
-        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("sockets"), userInfo: nil, repeats: true)
-    }
-
-    func loopData(){
- //       let test = NSUserDefaults.standardUserDefaults().stringForKey("readString");
- //       netData.text = test
-        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-        request.HTTPMethod = "POST"
-
-        let postString = "username=root&password=root&tablename=module_1"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {data, response, error in
-            if (error == nil) {
-                let result = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-                //Execute UI code immediately
-                dispatch_async(dispatch_get_main_queue(), {
-                    //                    self.labelRead.text = result as String
-                    let teststring = result as String
-                    var array = [Character](teststring.characters)
-                    let strsplit = array.split("\t")
-                    //print(strsplit[0])
-                    var ip = String(strsplit[0])
-
-                    self.netData.text = ip
-
-                })
-            } else {
-                print(error)
-            }
-        })
-        task.resume()
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(socketsController.sockets), userInfo: nil, repeats: true)
     }
 
     func sockets(){
-        //        var ar: [String] = []
-        //var buffer = [UInt8](count: 255, repeatedValue: 0)
-
-        NSStream.getStreamsToHostWithName("192.168.42.1", port: 10000, inputStream: &inp, outputStream: &out)
-//        if inp != nil && out != nil {
-//            let inputStream : NSInputStream = inp!
-//            inputStream.open()
-//            let outputStream : NSOutputStream = out!
-//            outputStream.open()
-
-//            if outputStream.streamError == nil {
-//                let queryString: String = "cmd> "
- //               let queryData: NSData = queryString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
- //               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-//                    while true {
-//                        outputStream.write(UnsafePointer(queryData.bytes),maxLength:queryData.length)
-
-/*                        if (readChars > 0) {
-                        } else {
-                            print ("server closed connection")
-                            NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "readString");
-                            inputStream.close()
-                            outputStream.close()
-                            break
-                        }*/
-//                    }
-//                })
-//            } else {
-//                print ("could not create socket")
-//            }
-//        } else {
-//            print ("could not initialize stream")
-//        }
-        
+        // debug
+        Stream.getStreamsToHost(withName: "localhost", port: 10000, inputStream: &inp, outputStream: &out)
+        // Rovers IP address
+        //Stream.getStreamsToHost(withName: "192.168.42.1", port: 10000, inputStream: &inp, outputStream: &out)
     }
 
-    func socketWrite(queryString: String) -> String {
+    func socketWrite(_ queryString: String) -> String {
         if inp != nil && out != nil {
 
-            let inputStream : NSInputStream = inp!
+            let inputStream : InputStream = inp!
             inputStream.open()
-            let outputStream : NSOutputStream = out!
+            let outputStream : OutputStream = out!
             outputStream.open()
 
             if outputStream.streamError == nil {
-                let queryData: NSData = queryString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                    outputStream.write(UnsafePointer(queryData.bytes),maxLength:queryData.length)
+                let queryData: Data = queryString.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+                    outputStream.write((queryData as NSData).bytes.bindMemory(to: UInt8.self, capacity: queryData.count),maxLength:queryData.count)
                 })
             }else {
                 print ("could not create socket")

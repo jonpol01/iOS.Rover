@@ -203,15 +203,18 @@
 					556857421D086951003639B5 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZKJ47SNHYL;
+						LastSwiftMigration = 0800;
 					};
 					556857561D086952003639B5 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZKJ47SNHYL;
+						LastSwiftMigration = 0800;
 						TestTargetID = 556857421D086951003639B5;
 					};
 					556857611D086952003639B5 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZKJ47SNHYL;
+						LastSwiftMigration = 0800;
 						TestTargetID = 556857421D086951003639B5;
 					};
 				};
@@ -422,6 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-Monitor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -437,6 +441,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-Monitor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -448,6 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-MonitorTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sockets.Monitor.app/Sockets.Monitor";
 			};
 			name = Debug;
@@ -460,6 +466,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-MonitorTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sockets.Monitor.app/Sockets.Monitor";
 			};
 			name = Release;
@@ -471,6 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-MonitorUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Sockets.Monitor;
 			};
 			name = Debug;
@@ -482,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.swiftproj.Sockets-MonitorUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Sockets.Monitor;
 			};
 			name = Release;

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AAEFA302DC6E187DBAFC5531F57004280B76AF7E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AAEFA302DC6E187DBAFC5531F57004280B76AF7E" : 0,
+    "C3A67A26244969147138737E4673409F784C5B9B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6F82FC55-3D5D-418D-BC97-19EB6A8A6413",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AAEFA302DC6E187DBAFC5531F57004280B76AF7E" : "Sockets.Rover\/",
+    "C3A67A26244969147138737E4673409F784C5B9B" : "..\/..\/..\/jonpol\/@LINE_pretest"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sockets.Monitor",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Sockets.Monitor.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jonpol01\/iOS.Rover.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AAEFA302DC6E187DBAFC5531F57004280B76AF7E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jonpol01\/-My-template-.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3A67A26244969147138737E4673409F784C5B9B"
+    }
+  ]
+}
